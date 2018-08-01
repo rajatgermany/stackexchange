@@ -3,7 +3,7 @@ import json
 import itertools
 
 # file_paths
-data_dir_path = './cooking.stackexchange.com'
+data_dir_path = './aviation.stackexchange.com'
 train_file_path = os.path.join(data_dir_path, 'test.tsv')
 question_file_path = os.path.join(data_dir_path, 'questions.tsv')
 answers_file_path = os.path.join(data_dir_path, 'answers.tsv')
@@ -82,7 +82,7 @@ def buildQuestionAnswerPair(file_index):
 def buildText(file_index):
     setup()
     questionAnswerPair = buildQuestionAnswerPair(int(file_index))
-    output_file_path = './textData' + file_index + '.txt'
+    output_file_path = './textData' + file_index + 'aviation '+.txt'
     with open(output_file_path, 'w') as output:
         for item in result:
             for key , value in item.items():
