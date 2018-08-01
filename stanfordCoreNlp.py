@@ -51,7 +51,6 @@ def buildCoref (file_index):
                     })          
 
             result = json.loads(result)
-            print('resuöt', result)
         
             q = []
             for key, value in result['corefs'].items():
