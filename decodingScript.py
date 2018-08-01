@@ -4,7 +4,7 @@ import itertools
 
 # file_paths
 data_dir_path = './cooking.stackexchange.com'
-train_file_path = os.path.join(data_dir_path, 'train.tsv')
+train_file_path = os.path.join(data_dir_path, 'test.tsv')
 question_file_path = os.path.join(data_dir_path, 'questions.tsv')
 answers_file_path = os.path.join(data_dir_path, 'answers.tsv')
 vocab_file_path = os.path.join(data_dir_path, 'vocab.tsv')
@@ -58,13 +58,13 @@ def buildQuestionAnswerPair(file_index):
     with open(train_file_path, 'r') as file:
         range_start = (file_index -1) * 100
     
-        range_end = range_start + 12
+        range_end = range_start + 1
         print('range', range_start, range_end)
         for line in itertools.islice(file, range_start, range_end):
             question_answer_pair = dict()
             indexs = ' '.join(line.split()).split(' ')
             question_index = indexs[0]
-            answer_indexs = indexs[1:]
+            answer_indexs = indexs[1:21]
             
             question_string = buildString(question_index, 'question')
             list_of_answer_strings = []
