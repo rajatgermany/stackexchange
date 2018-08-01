@@ -82,7 +82,7 @@ def buildQuestionAnswerPair(file_index):
 def buildText(file_index):
     setup()
     questionAnswerPair = buildQuestionAnswerPair(int(file_index))
-    output_file_path = './textData' + file_index + 'aviation '+.txt'
+    output_file_path = './textData' + file_index + 'aviation'+'.txt'
     with open(output_file_path, 'w') as output:
         for item in result:
             for key , value in item.items():
