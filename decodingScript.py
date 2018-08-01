@@ -58,7 +58,7 @@ def buildQuestionAnswerPair(file_index):
     with open(train_file_path, 'r') as file:
         range_start = (file_index -1) * 100
     
-        range_end = range_start + 1
+        range_end = range_start + 100
         print('range', range_start, range_end)
         for line in itertools.islice(file, range_start, range_end):
             question_answer_pair = dict()
