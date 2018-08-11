@@ -9,8 +9,8 @@ j = []
 coref_data = []
 
 def buildCoref (file_index):
-    file_name = 'textData' + file_index + 'aviation'+ '.txt'
-    coref_file_name = 'coref'+ file_index + 'aviation'+'.json'
+    file_name = 'textData' + file_index + 'apple'+ '.txt'
+    coref_file_name = 'coref'+ file_index + 'apple'+'.json'
 
     with open(file_name, 'r') as file:
         answer = []
