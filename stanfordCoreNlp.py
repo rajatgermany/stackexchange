@@ -9,15 +9,15 @@ j = []
 coref_data = []
 
 def buildCoref (file_index):
-    file_name = 'textData' + file_index + 'apple'+ '.txt'
-    coref_file_name = 'coref'+ file_index + 'apple'+'.json'
+    file_name = 'textData' + file_index + 'money'+ '.txt'
+    coref_file_name = 'coref'+ file_index + 'money'+'.json'
 
     with open(file_name, 'r') as file:
         answer = []
         question_number = -1
+        per_question_number = 0
         for line in file:
             if 'start question' in line: 
-                per_question_number = 0
                 question_number = question_number +1 
                 print('question number -------', question_number)
                 index = 1
@@ -27,6 +27,7 @@ def buildCoref (file_index):
             elif 'end question' in line:
                 index = 0  
                 coref_data.append({question_number: j, 'question': question})
+                per_question_number = 0
                 continue
 
             elif index == 1:
@@ -40,7 +41,6 @@ def buildCoref (file_index):
         
         
             line = line.rstrip()       
-            print('question', question)
             sentence = ' '.join([question, line])
             print('sentence', sentence)
             result =  nlp.annotate( sentence, properties=
@@ -54,7 +54,6 @@ def buildCoref (file_index):
         
             q = []
             for key, value in result['corefs'].items():
-                print(value)
                 u = []
                 for i in value:
                     u.append({'text': i['text'], 'position': i['position']})

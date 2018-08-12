@@ -3,7 +3,7 @@ import json
 import itertools
 
 # file_paths
-data_dir_path = './apple.stackexchange.com'
+data_dir_path = './money.stackexchange.com'
 train_file_path = os.path.join(data_dir_path, 'test.tsv')
 question_file_path = os.path.join(data_dir_path, 'questions.tsv')
 answers_file_path = os.path.join(data_dir_path, 'answers.tsv')
