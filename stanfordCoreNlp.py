@@ -9,8 +9,8 @@ j = []
 coref_data = []
 
 def buildCoref (file_index):
-    file_name = 'textData' + file_index + '.txt'
-    coref_file_name = 'coref'+ file_index + '.json'
+    file_name = 'textData' + file_index + 'travel' + '.txt'
+    coref_file_name = 'coref'+ file_index +'travel'+ '.json'
 
     with open(file_name, 'r') as file:
         answer = []
@@ -40,9 +40,7 @@ def buildCoref (file_index):
         
         
             line = line.rstrip()       
-            print('question', question)
             sentence = ' '.join([question, line])
-            print('sentence', sentence)
             result =  nlp.annotate( sentence, properties=
                     {
                         'timeout': '10000000',
@@ -54,7 +52,6 @@ def buildCoref (file_index):
         
             q = []
             for key, value in result['corefs'].items():
-                print(value)
                 u = []
                 for i in value:
                     u.append({'text': i['text'], 'position': i['position']})
