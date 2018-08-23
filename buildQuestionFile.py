@@ -1,10 +1,12 @@
+#coding=utf-8
+
 import os 
 import json
 import itertools
 
-data_dir_path = './cooking.stackexchange.com'
+data_dir_path = './apple.stackexchange.com'
 vocab_file_path = os.path.join(data_dir_path, 'vocab.tsv')
-question_file_path = os.path.join(data_dir_path, 'train.tsv')
+question_file_path = os.path.join(data_dir_path, 'test.tsv')
 
 result = []
 vocabulary_dict = dict()
@@ -17,9 +19,28 @@ with open(vocab_file_path, 'r') as vocabulary:
         tokens = line.split()
         vocabulary_dict[tokens[1]] = tokens[0]
 
+
+def fix_anomalies(item):
+    anomalies = ["''", '-LRB-', '-RRB-']
+    print('item------->', item)
+    mapping = {
+        "''": '"',
+        '-LRB-': '(',
+        '-RRB-': ')', 
+        'Crème': 'Crème'
+
+    }
+    
+    if item == 'Cr\xe8me':
+        print('it huts ')
+
+    if item in anomalies: 
+        return vocabulary_dict[mapping[item]]
+    return vocabulary_dict[item]
+
 def getIndexs(item):
     data = item.split(' ')
-    return [vocabulary_dict[token] for token in data]
+    return [fix_anomalies(token) for token in data]
 
 def build_indexs():
     for item in data:
@@ -41,7 +62,7 @@ def build_indexs():
                     answer_mentions = pair[1:]
                     
                     question_mention_tokens = question_mention.split(' ')
-                    question_mention_tokens_indexs = [vocabulary_dict[token] for token in question_mention_tokens]
+                    question_mention_tokens_indexs = [fix_anomalies(token) for token in question_mention_tokens]
                     per_pair_token_indexs.append(question_mention_tokens_indexs)
                     
                     ## this is for the second case 
@@ -121,5 +142,3 @@ with open('corefQuestionFile.txt', 'w') as file:
             file.write(final_string)
             final_string = ''
             question_number +=1
-
-                

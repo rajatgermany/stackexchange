@@ -21,8 +21,8 @@ def change_key_of_item(item , index) :
     return updated_dict  
 
 
-for i in range(1, 9):
-    file_name = 'coref'+ str(i) + '.json'
+for i in range(1, 10):
+    file_name = 'coref'+ str(i) + 'apple' '.json'
     file_path = join(dir_path + file_name)
     with open(file_path, 'r') as f:
         coref = [change_key_of_item(item, i) for item in json.load(f)]
