@@ -18,7 +18,7 @@ def buildCoref (file_index):
         for line in file:
             if 'start question' in line: 
                 per_question_number = 0
-                question_number = question_number +1 
+                question_number = question_number + 1 
                 print('question number -------', question_number)
                 index = 1
                 j = []
@@ -40,9 +40,7 @@ def buildCoref (file_index):
         
         
             line = line.rstrip()       
-            print('question', question)
             sentence = ' '.join([question, line])
-            print('sentence', sentence)
             result =  nlp.annotate( sentence, properties=
                     {
                         'timeout': '10000000',
@@ -61,10 +59,6 @@ def buildCoref (file_index):
                 q.append(u)
             
             j.append(q)
-
-            with open('hello.json', 'w') as zz:
-                json.dump(q,  zz)
-
             
 
     with open(coref_file_name, 'w') as q:
