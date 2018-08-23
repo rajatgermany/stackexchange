@@ -117,21 +117,23 @@ with open('corefQuestionFile.txt', 'w') as file:
                     answer_referent_indexs = pair[1]
                     
                     answer_string = ''
-                    
                     count_number_of_answer_referent_index = 0
-                    print('count_number_of_answer_referent_index', answer_referent_indexs, count_number_of_answer_referent_index , len(answer_referent_indexs))
                     for list_of_index in answer_referent_indexs:
-                        count = 1
-                        length_of_index = len(list_of_index)
-                        count_number_of_answer_referent_index = count_number_of_answer_referent_index + 1
-                        for answer_index in list_of_index:
-                            print('count', count)
-                            answer_string =  answer_string  + answer_index + ':' + ' '.join(question_referent_indexs) 
+                        count_number_of_answer_referent_index = count_number_of_answer_referent_index + len(list_of_index)
 
-                            if count < len(list_of_index) :
-                                print('dewfwffew', count , len(list_of_index))
+                    count = 0
+                    print('count_number_of_answer_referent_index', count_number_of_answer_referent_index)
+                    for list_of_index in answer_referent_indexs:
+                        print('list_of_index', list_of_index)
+                        length_of_index = len(answer_referent_indexs)
+                        print('coubt', count)
+                        for answer_index in list_of_index:
+                            answer_string =  answer_string  + answer_index + ':' + ' '.join(question_referent_indexs) 
+                            count = count + 1
+
+                            if count <= count_number_of_answer_referent_index -1:
                                 answer_string = answer_string + ';'
-                                count = count + 1
+                                
                                  
                     token_string = token_string + answer_string  
                     referent_string = referent_string + index + str([token_string]) + ' ' 
