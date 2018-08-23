@@ -2,7 +2,7 @@ import os
 import json
 k = list()
 g = []
-with open('coref1.json', 'r') as f:
+with open('final_coref.json', 'r') as f:
     data = json.load(f)
 
 for items in data:
