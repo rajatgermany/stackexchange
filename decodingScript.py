@@ -4,7 +4,7 @@ import itertools
 
 # file_paths
 data_dir_path = './cooking.stackexchange.com'
-train_file_path = os.path.join(data_dir_path, 'test.tsv')
+train_file_path = os.path.join(data_dir_path, 'valid.tsv')
 question_file_path = os.path.join(data_dir_path, 'questions.tsv')
 answers_file_path = os.path.join(data_dir_path, 'answers.tsv')
 vocab_file_path = os.path.join(data_dir_path, 'vocab.tsv')
@@ -82,7 +82,7 @@ def buildQuestionAnswerPair(file_index):
 def buildText(file_index):
     setup()
     questionAnswerPair = buildQuestionAnswerPair(int(file_index))
-    output_file_path = './textData' + file_index + '.txt'
+    output_file_path = './textData' + file_index + 'cooking_valid' + '.txt'
     with open(output_file_path, 'w') as output:
         for item in result:
             for key , value in item.items():
